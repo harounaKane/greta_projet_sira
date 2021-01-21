@@ -5,3 +5,8 @@ header{
   background-position-y: -180px;
   padding-bottom: 15%;
 }
+
+
+.hide{
+  display: none;
+}

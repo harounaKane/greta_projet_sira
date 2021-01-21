@@ -31,6 +31,8 @@ if(isset($_POST['inscription'])){
 
 }
 
+$title = "Inscription";
+
 require 'vues/header.php';
 
 include 'vues/vue_inscription.php';
