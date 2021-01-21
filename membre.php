@@ -46,9 +46,9 @@ if( isset($_GET['action']) && ctype_digit($_GET['id']) ){
 if( isset($_POST['ajout']) ){
   //va produire des variables ($prenom, $pseudo ...)
   extract($_POST);
-
   //cas UPDATE
   if( !empty($_POST['id_membre']) ){
+
     $sql = "UPDATE membre SET
                           pseudo   = :pseudo,
                           prenom   = :prenom,
@@ -76,6 +76,12 @@ if( isset($_POST['ajout']) ){
 
     //cas INSERT
   }else{
+    if( existes("membre", "pseudo", $pseudo) || existes("membre", "email", $mail) ){
+      $_SESSION['message'] = "Ce pseudo ou mail existe déjà !";
+      header("location: membre.php");
+      exit();
+    }
+
     $sql = "INSERT INTO membre VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, now())";
     $req = bd()->prepare($sql);
     $req->execute([$pseudo, $mdp, $nom, $prenom, $mail, $civilite, $statut]);

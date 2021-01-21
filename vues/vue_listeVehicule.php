@@ -32,7 +32,7 @@
             </div>
             <form action="reservation.php" method="post">
                <input type="hidden" name="reservation" value="<?= $vehicule['id_vehicule'] ?>">
-               <button type="submit" class="btn btn-success m-2">Réserver</button>
+               <button type="submit" class="btn btn-success m-2" <?= enLocation($vehicule['id_vehicule']) ? "disabled" : "" ?>>Réserver</button>
             </form>
          </div>
 

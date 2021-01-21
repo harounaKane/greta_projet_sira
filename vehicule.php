@@ -1,6 +1,10 @@
 <?php
 
 include 'fonctions.php';
+if( !isAdmin() ){
+  header("Location: index.php");
+  exit();
+}
 
 
 $agences = getAll("agence");

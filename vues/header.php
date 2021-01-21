@@ -14,13 +14,13 @@
     <nav>
       <a class="btn btn-warning" href="index.php">Accueil</a>
       <?php if( isConnected() ): ?>
-        <a class="btn btn-success" href="membre.php">Mon compte</a>
+        <a class="btn btn-success" href="compte.php">Mon compte</a>
 
         <?php if( isAdmin() ): ?>
           <a class="btn btn-success" href="membre.php">Gestion Membre</a>
           <a class="btn btn-success" href="vehicule.php">Gestion Véhicule</a>
           <a class="btn btn-success" href="agence.php">Gestion Agence</a>
-          <a class="btn btn-success" href="">Gestion Commande</a>
+          <a class="btn btn-success" href="commande.php">Gestion Commande</a>
         <?php endif; ?>
         <a class="btn btn-danger" href="connexion.php?action=logOut">Déconnexion</a>
       <?php else: ?>

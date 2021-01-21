@@ -13,8 +13,7 @@ if(isset($_POST['inscription'])){
 // $sql = "INSERT INTO membre(pseudo, mdp, nom, prenom, email, civilite, statut, date_enregistrement) VALUES(:login, :mdp, :nom, :prenom, :mail, :sexe, 0, now())"
 
  $sql = "INSERT INTO membre VALUES(NULL, :login, :mdp, :nom, :prenom, :mail, :sexe, 0, now())";
-
-  $req = bd()->prepare($sql);
+   $req = bd()->prepare($sql);
   $req->execute([
     "login"   => $pseudo,
     "mdp"     => $mdp,
