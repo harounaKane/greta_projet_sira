@@ -16,7 +16,7 @@ if(isset($_POST['inscription'])){
    $req = bd()->prepare($sql);
   $req->execute([
     "login"   => $pseudo,
-    "mdp"     => $mdp,
+    "mdp"     => password_hash($mdp, PASSWORD_DEFAULT),
     "nom"     => $nom,
     "prenom"  => $prenom,
     "mail"    => $mail,

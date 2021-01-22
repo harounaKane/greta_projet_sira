@@ -9,6 +9,7 @@ function bd(){
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
   ]);
+  $pdo->exec("SET NAMES utf8");
   return $pdo;
 }
 
@@ -39,6 +40,11 @@ function getAll($table){
 function executeRequete($query, $params = array()){
 
   $res = bd()->prepare($query);
+  if ( !empty($params) ) {
+    foreach ($params as $key => $value) {
+      $params[$key] = htmlentities($value);
+    }
+  }
   $res->execute($params);
 
   return $res;

@@ -18,7 +18,7 @@
     <tr class="thead-dark">
       <td> <?= $value['titre_agence']; ?> </td>
       <td> <?= $value['titre']; ?> </td>
-      <td> <?= $value['marque']; ?> </td>
+      <td> <?= htmlentities($value['marque']); ?> </td>
       <td> <?= $value['modele']; ?> </td>
       <td> <?= $value['description']; ?> </td>
       <td> <img class="w-50" src="public/images/vehicules/<?= $value['photo']; ?>" alt="photo véhicule"> </td>
@@ -38,18 +38,18 @@
   <h3 class="text-center bg-secondary p-2">Ajout/modification de véhicule</h3>
   <form action="" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id_vehicule" value="<?= $vehicule_actuel['id_vehicule'] ?? 0 ?>">
-   <div class="form-group">
-     <select name="id_agence" id="filtre">
+    <div class="form-group">
+      <select name="id_agence" id="filtre" required>
 
-        <option>-- choix Agence --</option>
+        <?= $_GET['option'] ?? "<option>-- choix Agence --</option>" ?>
 
         <?php foreach($agences as $agence) : ?>
           <option value="<?= $agence['id_agence'] ?>" href="?option=filtre_agence&id_agence=<?= $agence['id_agence'] ?>">
             <?= $agence['titre'] ?>
           </option>
         <?php endforeach; ?>
-     </select>
-   </div>
+      </select>
+    </div>
     <div class="row">
       <div class="form-group col-6">
         <label for="">Titre</label>

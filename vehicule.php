@@ -34,7 +34,7 @@ if( isset($_GET['option']) && $_GET['option'] == 'filtre_agence' ){
 if( isset($_POST['titre']) ){
   extract($_POST);
 
-  if( $_POST['photo_actuelle'] ){
+  if( isset($_POST['photo_actuelle']) ){
      $nom_photo = $_POST['photo_actuelle'];
   }
 
@@ -51,7 +51,7 @@ if( isset($_POST['titre']) ){
     $query = "INSERT INTO vehicule VALUES(NULL, :agence, :titre, :marque, :modele, :descs, :photo, :prix)";
 
     $recup = executeRequete($query, [
-      "agence"  => $id_agence,
+      "agence"  => 4,//$id_agence,
       "titre"   => $titre,
       "marque"  => $marque,
       "modele"  => $modele,

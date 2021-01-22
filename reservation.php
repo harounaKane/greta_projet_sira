@@ -3,8 +3,9 @@
 require 'fonctions.php';
 
 if( !isConnected() ){
-  echo "veuillez vous connecter";
-  //header
+  $_SESSION['message'] = "Veuillez vous connecter pour effectuer une reservation";
+  header("location: connexion.php");
+  exit();
 }
 
 if( isset($_POST['reservation']) ){
